@@ -1,0 +1,304 @@
+/* إزالة المسافات الضامنة وتحديد الخط */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/bg.jpg') center center / cover no-repeat fixed !important;
+    min-height: 100vh;
+}
+
+/* القائمة العلوية Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #d8cecc; /* لون النادبار المطابق لتصميمك */
+    direction: rtl; /* لجعل النصوص من اليمين لليسار */
+}
+
+nav h1 {
+    font-size: 20px;
+    color: #222;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #2e7d32;
+}
+
+/* قسم الصورة الرئيسية كاملة Height */
+/* ضبط قسم الهيدر ليكون بخلفية واضحة وبحجم مريح */
+.hero-section {
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.hero-section h1 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* صندوق الفلترة الرمادي الشفاف */
+.filter-card {
+    background: rgba(225, 220, 218, 0.88);
+    width: 100%;
+    max-width: 700px;
+    padding: 35px 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+/* ترتيب الحقول أفقياً */
+.filter-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.filter-group select, 
+.filter-group input {
+    flex: 1;
+    padding: 12px 10px;
+    border: 1px solid #b5b0ad;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    background-color: white;
+    text-align: center;
+}
+
+/* زر توليد الوجبة */
+#generate-btn {
+    width: 50%;
+    padding: 12px;
+    background-color: #8edc9d;
+    border: 1px solid #7bc68a;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1b4332;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#generate-btn:hover {
+    background-color: #7bc68a;
+    transform: scale(1.02);
+}
+/* تنسيق شبكة الكروت وحجم الصور */
+
+.meals-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 8%;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+}
+
+.meal-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.meal-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.meal-card-content {
+    padding: 15px 20px;
+    text-align: right;
+}
+
+.meal-card-content h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.meal-card-content p {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+/* تنسيق الرسائل والنصوص التي تظهر فوق الخلفية */
+/* 1. تنسيق شريط ملاحظة البدائل (شريط مختصر ومرتب) */
+.suggestion-note {
+    grid-column: 1 / -1;
+    width: fit-content;
+    max-width: 90%;
+    margin: 10px auto 20px auto;
+    padding: 10px 20px;
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    direction: rtl;
+    border-radius: 8px;
+    border: 1px solid #ffeeba;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. تنسيق مربع عدم توفر الوجبات (مربع أسود بارز ومستقل) */
+.no-meals {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px 25px;
+    background-color: #fff3cd !important; /* خلفية سوداء واضحة */
+    color: #856404 !important; /* خط أبيض ناصع */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    direction: rtl;
+    border-radius: 12px;
+    border: 1px solid #ffeeba;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* تنسيق كارت الوجبة لإظهار الاسم بوضوح */
+.meal-card-content h3 {
+    color: #2d3436;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* تنسيق صفحة عن التطبيق */
+.about-container {
+    background: rgba(225, 220, 218, 0.90); /* لون مطابق لصندوق الفلترة في الصفحة الرئيسية */
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    direction: rtl;
+}
+
+.about-container h1 {
+    color: #1b4332;
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #8edc9d;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.about-text {
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+/* تنسيق صفحة تواصل معنا */
+.contact-container {
+    background: rgba(225, 220, 218, 0.92);
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 35px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    direction: rtl;
+}
+
+.contact-container h1 {
+    color: #1b4332;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.contact-desc {
+    color: #555;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #27ae60;
+}
+
+.submit-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #219150;
+}

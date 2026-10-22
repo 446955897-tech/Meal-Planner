@@ -1,0 +1,76 @@
+<html>
+    <head>
+         <meta charset="UTF-8">
+         <title>تواصل معنا</title>
+         <link rel = "stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <nav> 
+            <h1> مولد الوجبات والنظام الغذائي  </h1>
+
+             <ul> 
+                <li> <a href="index.html">الرئيسية</a> </li> 
+                <li> <a href="favorites.html">المفضلة</a> </li>
+                <li> <a href="about.html">عن التطبيق</a> </li> 
+                <li> <a href="contact.html">تواصل معنا</a> </li> 
+             </ul>
+        </nav>
+
+ <div class="contact-container">
+        <h1>تواصل معنا</h1>
+
+        <p class="contact-desc">إذا كان لديك أي أسئلة أو اقتراحات، يسعدنا تواصلك معنا عبر النموذج التالي:</p>
+        
+        <form class="contact-form" id="contactForm" onsubmit="submitContactForm(event)">
+            <div class="form-group">
+                <label>الاسم الكامل:</label>
+                <input type="text" id="name" required placeholder="أدخل اسمك">
+            </div>
+
+            <div class="form-group">
+                <label>البريد الإلكتروني:</label>
+                <input type="email" id="email" required placeholder="example@mail.com">
+            </div>
+
+            <div class="form-group">
+                <label>الرسالة:</label>
+                <textarea id="message" rows="4" required placeholder="اكتب رسالتك هنا..."></textarea>
+            </div>
+            <button type="submit" class="submit-btn">إرسال الرسالة</button>
+        </form>
+
+    </div>
+
+    <script>
+    function submitContactForm(event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('name', document.getElementById('name').value);
+        formData.append('email', document.getElementById('email').value);
+        formData.append('message', document.getElementById('message').value);
+
+        fetch('send_message.php', {
+            method: 'POST',
+            body: formData
+        })
+
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            if (data.status === 'success') {
+                document.getElementById('contactForm').reset(); // تفريغ الخانات عند النجاح
+            }
+        })
+
+        .catch(error => {
+            console.error('Error:', error);
+            alert('حدث خطأ في الاتصال بالسيرفر');
+        });
+    }
+    
+    </script>
+
+    </body>
+</html>

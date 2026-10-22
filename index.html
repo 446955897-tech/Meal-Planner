@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="UTF-8">
+       <title>مولد الوجبات والنظام الغذائي</title>
+       <link rel = "stylesheet" href="style.css">
+       
+    </head>
+
+    <body> 
+        <!-- القائمة العلوية -->
+         <nav> 
+           
+            <h1> مولد الوجبات والنظام الغذائي  </h1>
+
+             <ul> <li> <a href="index.html">الرئيسية</a> </li> 
+                <li> <a href="favorites.html">المفضلة</a> </li>
+                <li> <a href="about.html">عن التطبيق</a> </li> 
+                <li> <a href="contact.html">تواصل معنا</a> </li> 
+                
+             </ul> </nav>
+<!-- قسم الفلترة مع صورة الخلفية الكاملة -->
+     <header class="hero-section">
+
+        <h1> صمم خطتك الغذائية بضغطة زر </h1>
+
+     <div class="filter-card">
+        <div class="filter-group">
+
+<!-- 1. نوع الدايت -->
+        <select id ="diet-select">
+            <option value="" disabled selected>نوع الدايت</option>
+            <option value="healthy"> صحي</option>
+            <option value="keto"> كيتو</option>
+            <option value="vegan"> نباتي</option>
+        </select>
+
+        <!-- 2. السعرات الحرارية -->
+         <input type="number" id="calories-input" placeholder="الحد الأقصى للسعرات الحرارية">
+
+         <!-- 3. نوع الوجبة -->
+        <select id ="meal-type-select">
+            <option value="" disabled selected>نوع الوجبة</option>
+            <option value="breakfast"> وجبة الافطار</option>
+            <option value="lunch"> وجبة الغداء</option>
+            <option value="dinner"> وجبة العشاء </option>
+        </select>
+         </div>
+
+           <button id="generate-btn">توليد الوجبة</button>
+
+     </div>      
+        </header>
+
+        <main id="meals-container" class="meals-container"></main>
+
+        <script src="script.js"></script>
+    </body>
+</html>
