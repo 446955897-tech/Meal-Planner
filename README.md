@@ -1,7 +1,7 @@
 # Meal-Planner
 Meal &amp; Nutrition Planner built with HTML, CSS, JavaScript, PHP, and MySQL
 
-## 🚀 Future Improvements (التحسينات المستقبلية)
+##  Future Improvements (التحسينات المستقبلية)
 
 - **إثراء قاعدة البيانات (Content Expansion):**
   - إضافة خيارات وجبات غذائية متنوعة وأكثر شمولاً لتغطي مختلف الأنظمة الغذائية (Keto, Vegan, Calories Control).
