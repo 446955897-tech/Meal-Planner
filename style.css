@@ -115,13 +115,14 @@ nav ul li a:hover {
 }
 /* تنسيق شبكة الكروت وحجم الصور */
 
-.meals-container {
+.meals-container, #favorites-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 25px;
     padding: 20px 8%;
     max-width: 1200px;
     margin: 0 auto 50px auto;
+    direction: rtl; /* يضمن بدء رصف الكروت من اليمين إلى اليسار */
 }
 
 .meal-card {
@@ -301,4 +302,65 @@ nav ul li a:hover {
 
 .submit-btn:hover {
     background-color: #219150;
+}
+
+
+/* تنسيق وتوسيط عنوان صفحة المفضلة */
+.favorites-header {
+    text-align: center; /* توسيط جميع النصوص داخل العنصر */
+    margin-bottom: 30px;
+}
+
+.favorites-header h2 {
+    color: #2c3e50; /* لون غامق وواضح للعنوان */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.favorites-header p {
+    color: #555; /* لون واضح للنص الفرعي */
+    font-size: 1.1rem;
+}
+
+/* توسيط رسالة عدم وجود وجبات */
+/* توسيط رسالة المفضلة الفارغة بالكامل */
+.empty-msg {
+    grid-column: 1 / -1; /* تجعل الرسالة تأخذ عرض الصفحة بالكامل داخل الـ Grid */
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #555;
+    padding: 50px 20px;
+    margin: 0 auto;
+    width: 100%;
+}
+main.favorites-header, main.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* إخفاء خلفية حاوية الوجبات إذا كانت فارغة */
+#meals-container:empty {
+    display: none;
+}
+/* تنسيق زر الإزالة في صفحة المفضلة */
+.remove-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
 }
